@@ -1,0 +1,92 @@
+USE CompaniaAereaDB
+SELECT *
+FROM Aviones
+
+--REGISTROS EN TABLA AVIONES
+USE CompaniaAereaDB
+INSERT INTO dbo.Aviones
+SELECT 1,'1','Avion Comercial','01001'
+SELECT 2,'5','Avioneta','011560'
+SELECT 3,'3','Yet','20302'
+
+
+--REGISTROS EN TABLA BASES
+
+USE CompaniaAereaDB
+SELECT *
+FROM Bases
+
+USE CompaniaAereaDB;
+INSERT INTO Bases ([ID_Base], [nombre_base], [codigo_base])
+VALUES (1, 'La Campanera', '1');
+INSERT INTO Bases ([ID_Base], [nombre_base], [codigo_base])
+VALUES (2, 'Angar 04', '5');
+INSERT INTO Bases ([ID_Base], [nombre_base], [codigo_base])
+VALUES (3, 'Cohachela', '3');
+
+
+--REGISTROS EN TABLA MIEMBROSTRIPULACION
+
+USE CompaniaAereaDB
+SELECT *
+FROM MiembrosTripulacion
+
+USE CompaniaAereaDB;
+INSERT INTO MiembrosTripulacion([ID_Miembro], [codigo_miembro], [nombre_miembro],[base_miembro])
+VALUES (1, '001', 'Juan de la luna','1');
+INSERT INTO MiembrosTripulacion([ID_Miembro], [codigo_miembro], [nombre_miembro],[base_miembro])
+VALUES (2, '002', 'Pedro Carrillo','2');
+INSERT INTO MiembrosTripulacion([ID_Miembro], [codigo_miembro], [nombre_miembro],[base_miembro])
+VALUES (3, '003', 'Tomas Lares','3');
+
+
+--REGISTROS EN TABLA PILOTOS
+
+USE CompaniaAereaDB
+SELECT *
+FROM Pilotos
+
+USE CompaniaAereaDB;
+INSERT INTO Pilotos([ID_Piloto], [codigo_piloto], [nombres], [apellidos], [horas_vuelo], [base_piloto])
+VALUES (1, '1', 'Jonh', 'Milton', 350, 1);
+INSERT INTO Pilotos([ID_Piloto], [codigo_piloto], [nombres], [apellidos], [horas_vuelo], [base_piloto])
+VALUES (2, '2', 'Mark', 'Paez', 730, 2);
+INSERT INTO Pilotos([ID_Piloto], [codigo_piloto], [nombres], [apellidos], [horas_vuelo], [base_piloto])
+VALUES (3, '3', 'Jose', 'Gomez', 525, 3);
+
+
+--REGISTROS EN TABLA VUELOS
+
+USE CompaniaAereaDB
+SELECT *
+FROM Vuelos
+
+USE CompaniaAereaDB;
+INSERT INTO Vuelos ([ID_Vuelo], [numero_vuelo], [origen], [destino], [hora], [avion], [piloto], [miembros_tripulacion])
+VALUES (1, 'VA101', 'Ciudad A', 'Ciudad B', '08:00:00', 1, 1, 1);
+INSERT INTO Vuelos ([ID_Vuelo], [numero_vuelo], [origen], [destino], [hora], [avion], [piloto], [miembros_tripulacion])
+VALUES (2, 'VA202', 'Ciudad C', 'Ciudad D', '12:30:00', 2, 2, 2);
+INSERT INTO Vuelos ([ID_Vuelo], [numero_vuelo], [origen], [destino], [hora], [avion], [piloto], [miembros_tripulacion])
+VALUES (3, 'VA303', 'Ciudad E', 'Ciudad F', '17:15:00', 3, 3, 3);
+
+
+-- Modificar el vuelo con ID_Vuelo igual a 1
+UPDATE Vuelos
+SET [numero_vuelo] = 'VA101',
+    [origen] = 'Salama',
+    [destino] = 'Ciudad Capital',
+    [hora] = '10:30:00',
+    [avion] = 1,
+    [piloto] = 1,
+    [miembros_tripulacion] = 1
+WHERE [ID_Vuelo] = 1;
+
+
+--FILTRAR POR ORDEN ASCENDENTE LOS PILOTOS
+USE CompaniaAereaDB;
+
+SELECT [nombres], [apellidos]
+FROM Pilotos
+ORDER BY [nombres] ASC;
+
+
